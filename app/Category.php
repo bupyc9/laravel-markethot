@@ -37,6 +37,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Category whereDeletedAt($value)
  * @method static QueryBuilder|Category withTrashed()
  * @method static QueryBuilder|Category withoutTrashed()
+ * @property-read Collection|Product[] $products
  */
 class Category extends Model
 {
@@ -49,5 +50,10 @@ class Category extends Model
     public function parent(): HasOne
     {
         return $this->hasOne(self::class);
+    }
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class);
     }
 }
