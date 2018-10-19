@@ -74,3 +74,31 @@ services:
     working_dir: /var/www
     networks:
       - default
+
+  horizon:
+    build:
+      context: ./docker/php-cli
+      args:
+        - INSTALL_REDIS=true
+    volumes:
+      - ./:/var/www:cached
+    working_dir: /var/www
+    command: php artisan horizon
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - default
+
+  scheduler:
+    build:
+      context: ./docker/php-cli
+      args:
+        - INSTALL_PHPREDIS=true
+        - INSTALL_BCMATH=true
+    volumes:
+      - ./:/var/www:cached
+      - ./docker/php-cli/scheduler.sh:/scheduler.sh
+    command: sh -c "chmod +x /scheduler.sh && /scheduler.sh"
+    networks:
+      - default
