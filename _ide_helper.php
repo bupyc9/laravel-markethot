@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.9 on 2018-10-18 08:45:25.
+ * Generated for Laravel 5.7.9 on 2018-10-19 09:40:03.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -7419,16 +7419,28 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Get the number of queue jobs that are ready to process.
+         *
+         * @param string|null $queue
+         * @return int 
+         * @static 
+         */ 
+        public static function readyNow($queue = null)
+        {
+            return \Laravel\Horizon\RedisQueue::readyNow($queue);
+        }
+        
+        /**
          * Migrate the delayed jobs that are ready to the regular queue.
          *
          * @param string $from
          * @param string $to
-         * @return array 
+         * @return void 
          * @static 
          */ 
         public static function migrateExpiredJobs($from, $to)
         {
-            return \Illuminate\Queue\RedisQueue::migrateExpiredJobs($from, $to);
+            \Laravel\Horizon\RedisQueue::migrateExpiredJobs($from, $to);
         }
         
         /**
@@ -7441,7 +7453,7 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function deleteReserved($queue, $job)
         {
-            \Illuminate\Queue\RedisQueue::deleteReserved($queue, $job);
+            \Laravel\Horizon\RedisQueue::deleteReserved($queue, $job);
         }
         
         /**
@@ -7455,7 +7467,7 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function deleteAndRelease($queue, $job, $delay)
         {
-            \Illuminate\Queue\RedisQueue::deleteAndRelease($queue, $job, $delay);
+            \Laravel\Horizon\RedisQueue::deleteAndRelease($queue, $job, $delay);
         }
         
         /**
@@ -7467,7 +7479,8 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function getQueue($queue)
         {
-            return \Illuminate\Queue\RedisQueue::getQueue($queue);
+            //Method inherited from \Illuminate\Queue\RedisQueue            
+            return \Laravel\Horizon\RedisQueue::getQueue($queue);
         }
         
         /**
@@ -7478,7 +7491,8 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function getRedis()
         {
-            return \Illuminate\Queue\RedisQueue::getRedis();
+            //Method inherited from \Illuminate\Queue\RedisQueue            
+            return \Laravel\Horizon\RedisQueue::getRedis();
         }
         
         /**
@@ -7491,7 +7505,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobExpiration($job)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\RedisQueue::getJobExpiration($job);
+            return \Laravel\Horizon\RedisQueue::getJobExpiration($job);
         }
         
         /**
@@ -7504,7 +7518,7 @@ namespace Illuminate\Support\Facades {
         public static function createPayloadUsing($callback)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            \Illuminate\Queue\RedisQueue::createPayloadUsing($callback);
+            \Laravel\Horizon\RedisQueue::createPayloadUsing($callback);
         }
         
         /**
@@ -7517,7 +7531,7 @@ namespace Illuminate\Support\Facades {
         public static function setContainer($container)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-            \Illuminate\Queue\RedisQueue::setContainer($container);
+            \Laravel\Horizon\RedisQueue::setContainer($container);
         }
          
     }
@@ -13745,6 +13759,18 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace Laravel\Horizon { 
+
+    /**
+     * 
+     *
+     */ 
+    class Horizon {
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -16119,6 +16145,8 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class Horizon extends \Laravel\Horizon\Horizon {}
  
 }
 
