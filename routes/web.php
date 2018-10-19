@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/search', 'SearchController@index')->name('search');
 
 Route::get('/{code}/{childCode?}', 'CategoryController@index')->name('categoryIndex');

@@ -19,6 +19,15 @@
 </head>
 <body>
     <div class="container">
+        <nav class="navbar navbar-light bg-light">
+            <a href="{{route('home')}}" class="navbar-brand">Markethot</a>
+            <form class="form-inline" action="{{route('search')}}">
+                <input class="form-control mr-sm-2" type="search"
+                       placeholder="Поиск" aria-label="Поиск" name="q" value="{{request('q')}}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+            </form>
+        </nav>
+
         <div class="row justify-content-md-center">
             <aside class="col-3">
                 @include('categories')
