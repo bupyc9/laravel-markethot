@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ApiHomeController@index');
+
+Route::get('/{code}/{childCode?}', function () {
+    return 'Hello world';
+})->name('categoryIndex');
