@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'ApiHomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('/{code}/{childCode?}', function () {
     return 'Hello world';

@@ -20,10 +20,10 @@
 <body>
     <div class="container">
         <div class="row justify-content-md-center">
-            <aside class="col-4">
+            <aside class="col-3">
                 @include('categories')
             </aside>
-            <main class="col-8" role="main">
+            <main class="col-9" role="main">
                 @yield('content')
             </main>
         </div>
