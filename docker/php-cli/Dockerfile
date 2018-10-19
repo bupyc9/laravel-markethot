@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libmcrypt-dev \
   && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install pdo_pgsql gd mbstring iconv zip
-RUN docker-php-ext-enable pdo_pgsql gd mbstring iconv zip
+RUN docker-php-ext-install pdo_pgsql gd mbstring iconv zip pcntl
+RUN docker-php-ext-enable pdo_pgsql gd mbstring iconv zip pcntl
 
 ###########################################################################
 # PHP REDIS EXTENSION
