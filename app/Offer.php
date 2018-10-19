@@ -22,9 +22,7 @@ use Illuminate\Support\Carbon;
  * @property string $article
  * @property string $external_id
  * @property-read \App\Product $product
- * @method static bool|null forceDelete()
  * @method static QueryBuilder|Offer onlyTrashed()
- * @method static bool|null restore()
  * @method static Builder|Offer whereAmount($value)
  * @method static Builder|Offer whereArticle($value)
  * @method static Builder|Offer whereCreatedAt($value)

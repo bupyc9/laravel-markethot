@@ -31,9 +31,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Category whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read Category|null $parent
- * @method static bool|null forceDelete()
  * @method static QueryBuilder|Category onlyTrashed()
- * @method static bool|null restore()
  * @method static Builder|Category whereDeletedAt($value)
  * @method static QueryBuilder|Category withTrashed()
  * @method static QueryBuilder|Category withoutTrashed()
@@ -49,7 +47,7 @@ class Category extends Model
 
     public function parent(): HasOne
     {
-        return $this->hasOne(self::class);
+        return $this->hasOne(self::class, 'parent_id', 'id');
     }
 
     public function products(): BelongsToMany

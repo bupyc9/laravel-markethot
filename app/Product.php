@@ -35,9 +35,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Product wherePrice($value)
  * @method static Builder|Product whereUpdatedAt($value)
  * @mixin \Eloquent
- * @method static bool|null forceDelete()
  * @method static QueryBuilder|Product onlyTrashed()
- * @method static bool|null restore()
  * @method static QueryBuilder|Product withTrashed()
  * @method static QueryBuilder|Product withoutTrashed()
  * @property-read Collection|Offer[] $offers
