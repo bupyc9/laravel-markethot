@@ -13,6 +13,4 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/{code}/{childCode?}', function () {
-    return 'Hello world';
-})->name('categoryIndex');
+Route::get('/{code}/{childCode?}', 'CategoryController@index')->name('categoryIndex');
